@@ -248,6 +248,7 @@ export enum BackendChoice {
     Experitest = 'In the cloud using Experitest',
     Saucelabs = 'In the cloud using Sauce Labs',
     Browserstack = 'In the cloud using BrowserStack',
+    Tvlabs = 'In the cloud using TVLabs',
     OtherVendors = 'In the cloud using Testingbot or LambdaTest or a different service',
     Grid = 'I have my own Selenium cloud'
 }
@@ -473,6 +474,12 @@ export const QUESTIONNAIRE = [{
     default: 'SAUCE_ACCESS_KEY',
     when: /* istanbul ignore next */ (answers: Questionnair) => answers.backend === BackendChoice.Saucelabs
 }, {
+    type: 'input',
+    name: 'env_key',
+    message: 'Environment variable for access key',
+    default: 'TVLABS_API_KEY',
+    when: /* istanbul ignore next */ (answers: Questionnair) => answers.backend === BackendChoice.Tvlabs
+}, {
     type: 'list',
     name: 'region',
     message: 'In which region do you want to run your Sauce Labs tests in?',
@@ -653,6 +660,8 @@ export const QUESTIONNAIRE = [{
             services.push('browserstack')
         } else if (answers.backend === BackendChoice.Saucelabs) {
             services.push('sauce')
+        } else if (answers.backend === BackendChoice.Tvlabs) {
+            services.push('tvlabs')
         }
         if (answers.e2eEnvironment === 'mobile') {
             services.push('appium')
@@ -678,6 +687,8 @@ export const QUESTIONNAIRE = [{
             defaultServices.push('browserstack')
         } else if (answers.backend === BackendChoice.Saucelabs) {
             defaultServices.push('sauce')
+        } else if (answers.backend === BackendChoice.Tvlabs) {
+            defaultServices.push('tvlabs')
         }
         if (answers.e2eEnvironment === 'mobile' || getTestingPurpose(answers) === 'macos') {
             defaultServices.push('appium')
