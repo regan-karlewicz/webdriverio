@@ -168,6 +168,7 @@ export const SUPPORTED_PACKAGES = {
         { name: 'appium', value: '@wdio/appium-service$--$appium' },
         // external
         { name: 'eslinter-service', value: 'wdio-eslinter-service$--$eslinter' },
+        { name: 'tvlabs', value: '@tvlabs/wdio-service$--$tvlabs' },
         { name: 'lambdatest', value: 'wdio-lambdatest-service$--$lambdatest' },
         { name: 'zafira-listener', value: 'wdio-zafira-listener-service$--$zafira-listener' },
         { name: 'reportportal', value: 'wdio-reportportal-service$--$reportportal' },
